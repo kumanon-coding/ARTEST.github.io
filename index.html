@@ -3,9 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <!-- A-Frameを読み込む -->
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <!-- AR.jsを読み込む -->
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <title>ARTEST</title>
 </head>
-<body>
+<body style="margin: 0; overflow: hidden;">
+  <!-- A-FrameにAR.jsを紐づけ、VRボタン非表示、深度バッファ追加 -->
+  <a-scene embedded arjs vr-mode-ui="enabled: false;" renderer="logarithmicDepthBuffer: true;">
+    <!-- モデルの読み込み -->
+    <a-assets>
+      <a-asset-item id="bottle" src="./assets/bottle.glb"></a-asset-item>
+    </a-assets>
 
+    <!-- マーカーの.pattファイルを読み込む -->
+    <a-maker type="hidden" url="./assets/pattern-QR_773373.patt">
+      <!-- 3Dモデルを呼び出す -->
+      <a-entity glft-model="#bottle"></a-entity>
+    </a-maker>
+
+    <!-- カメラを追加 -->
+    <a-entity camera></a-entity>
+  </a-scene>
 </body>
 </html>
